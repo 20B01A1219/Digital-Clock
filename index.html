@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitak Clock</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        #time{
+            color :red;
+            font-size: 50px;
+            margin-top : 300px;
+            margin-left : 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "time"></div>
+    <script>
+        function showTime()
+        {
+          let dt = new Date();
+          let hrs = dt.getHours();
+          let min = dt.getMinutes();
+          let sec = dt.getSeconds();
+          let session = "AM";
+          if(hrs > 12)
+          {
+              session = "PM"
+          }
+          if (hrs > 12)
+          {
+              hrs = hrs - 12;
+          }
+          if (hrs == 0)
+          {
+              hrs = 12;
+          }
+          hrs = hrs < 10 ? "0"+ hrs : hrs;
+          min = min < 10 ? "0"+ min : min;
+          sec = sec < 10 ? "0"+ sec : sec;
+          document.getElementById("time").innerHTML = hrs + ":"+ min + ":" + sec+"  "+session;
+          setTimeout(showTime, 1000);
+        }
+        showTime();
+        
+    </script>
+</body>
+</html>
